@@ -1,5 +1,3 @@
-import { fetchData } from './UserApi'
+import {fetchData} from './UserApi';
 
-export {
-  fetchData
-}
+export {fetchData};

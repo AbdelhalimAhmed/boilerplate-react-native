@@ -1,14 +1,18 @@
-import { connect } from 'react-redux'
-import HomeScreen from './HomeScreen'
-import { requestApiData } from '../../Redux/UserRedux'
+import {connect} from 'react-redux';
+import HomeScreen from './HomeScreen';
+import {actions} from '../../Redux/UserRedux';
+
 const mapStateToProps = state => ({
-  user: state.user
-})
+  user: state.user,
+});
 
 const mapDispatchersToProps = dispatch => ({
-  getUser () {
-    dispatch(requestApiData())
-  }
-})
+  getUser() {
+    dispatch(actions.requestApiData());
+  },
+});
 
-export default connect(mapStateToProps, mapDispatchersToProps)(HomeScreen)
+export default connect(
+  mapStateToProps,
+  mapDispatchersToProps,
+)(HomeScreen);
