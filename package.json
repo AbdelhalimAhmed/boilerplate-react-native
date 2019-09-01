@@ -1,25 +1,30 @@
 {
-  "name": "TestProject",
+  "name": "BoilerplateReactNative",
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint ."
   },
   "dependencies": {
-    "apisauce": "^0.15.2",
-    "react": "16.4.1",
-    "react-native": "0.56.0",
-    "react-redux": "^5.0.7",
-    "redux": "^4.0.0",
+    "apisauce": "^1.1.0",
+    "react": "16.8.6",
+    "react-native": "0.60.5",
+    "react-redux": "^7.1.1",
+    "redux": "^4.0.4",
     "redux-persist": "^5.10.0",
-    "redux-saga": "^0.16.0"
+    "redux-saga": "^1.0.5"
   },
   "devDependencies": {
-    "babel-jest": "23.4.0",
-    "babel-preset-react-native": "^5",
-    "jest": "23.4.1",
-    "react-test-renderer": "16.4.1"
+    "@babel/core": "^7.5.5",
+    "@babel/runtime": "^7.5.5",
+    "@react-native-community/eslint-config": "^0.0.5",
+    "babel-jest": "^24.9.0",
+    "eslint": "^6.3.0",
+    "jest": "^24.9.0",
+    "metro-react-native-babel-preset": "^0.56.0",
+    "react-test-renderer": "16.8.6"
   },
   "jest": {
     "preset": "react-native"
