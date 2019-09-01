@@ -21,6 +21,8 @@ DerivedData
 *.ipa
 *.xcuserstate
 project.xcworkspace
+*.dSYM.zip
+
 
 # Android/IntelliJ
 #
@@ -29,6 +31,7 @@ build/
 .gradle
 local.properties
 *.iml
+*.apk
 
 # node.js
 #
@@ -40,6 +43,17 @@ yarn-error.log
 buck-out/
 \.buckd/
 *.keystore
+
+# exclude .env files
+.env
+.env*
+### CocoaPods ###
+## CocoaPods GitIgnore Template
+
+# CocoaPods - Only use to conserve bandwidth / Save time on Pushing
+#           - Also handy if you have a large number of dependant pods
+#           - AS PER https://guides.cocoapods.org/using/using-cocoapods.html NEVER IGNORE THE LOCK FILE
+Pods/
 
 # fastlane
 #
@@ -54,3 +68,12 @@ buck-out/
 
 # Bundle artifact
 *.jsbundle
+.vscode
+
+### CocoaPods ###
+## CocoaPods GitIgnore Template
+
+# CocoaPods - Only use to conserve bandwidth / Save time on Pushing
+#           - Also handy if you have a large number of dependant pods
+#           - AS PER https://guides.cocoapods.org/using/using-cocoapods.html NEVER IGNORE THE LOCK FILE
+Pods/
