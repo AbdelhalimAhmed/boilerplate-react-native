@@ -1,9 +1,28 @@
 import React from "react";
-import { View, Button } from "react-native";
+import { ScrollView, Button, ActivityIndicator, Text } from "react-native";
+import { useCalendarState, useCalendarDispatch, getHolidays } from '../../contexts/calendar-context'
 
-export default ({ navigation }) => (
-  <View style={{ flex: 1 }}>
-    <Button title="Open Modal" onPress={() => navigation.navigate("Modal")} />
-    <Button title="Open Alert" onPress={() => navigation.navigate("Alert")} />
-  </View>
-);
+export default ({ navigation }) => {
+  const { holidaysList, status, error } = useCalendarState()
+  const calendarDispatch = useCalendarDispatch()
+
+  function handleSubmit() {
+    getHolidays(calendarDispatch)
+  }
+
+  return (
+    <ScrollView contentContainerStyle={{
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingVertical: 100,
+    }}>
+      <Button title="Get Holidays In Egypt" onPress={() => handleSubmit()} />
+      {status === 'pending' && <ActivityIndicator color={'red'} />}
+      {holidaysList.map(item => {
+        return (
+          <Text key={item.id} style={{ marginVertical: 5 }}>{item.summary}</Text>
+        )
+      })}
+    </ScrollView>
+  )
+};

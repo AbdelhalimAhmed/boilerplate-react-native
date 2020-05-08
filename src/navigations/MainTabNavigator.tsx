@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import { CountProvider } from '../contexts/count-context'
 import { UserProvider } from '../contexts/user-context'
+import { CalendarProvider } from '../contexts/calendar-context'
 
 import Example from "../containers/example/example";
 import Profile from "../containers/profile/user-profile";
@@ -33,46 +34,49 @@ const AppTabs = createBottomTabNavigator();
 const AppTabsScreen = () => (
   <CountProvider>
     <UserProvider>
+      <CalendarProvider>
+        <AppTabs.Navigator>
+          <AppTabs.Screen
+            name="Example"
+            component={Example}
+            options={{
+              tabBarIcon: props => (
+                <Ionicons
+                  name="ios-checkmark-circle-outline"
+                  size={props.size}
+                  color={props.color}
+                />
+              )
+            }}
+          />
+          <AppTabs.Screen
+            name="Create"
+            component={CreateNewPlaceholder}
+            options={{
+              tabBarIcon: props => (
+                <Ionicons name="ios-add" size={props.size} color={props.color} />
+              )
+            }}
+            listeners={({ navigation }) => ({
+              tabPress: event => {
+                event.preventDefault();
+                navigation.navigate("CreateNew");
+              }
+            })}
+          />
+          <AppTabs.Screen
+            name="Profile"
+            component={ProfileStackScreen}
+            options={{
+              tabBarIcon: props => (
+                <Ionicons name="ios-contacts" size={props.size} color={props.color} />
+              )
+            }}
+          />
 
-      <AppTabs.Navigator>
-        <AppTabs.Screen
-          name="Profile"
-          component={ProfileStackScreen}
-          options={{
-            tabBarIcon: props => (
-              <Ionicons name="ios-contacts" size={props.size} color={props.color} />
-            )
-          }}
-        />
-        <AppTabs.Screen
-          name="Create"
-          component={CreateNewPlaceholder}
-          options={{
-            tabBarIcon: props => (
-              <Ionicons name="ios-add" size={props.size} color={props.color} />
-            )
-          }}
-          listeners={({ navigation }) => ({
-            tabPress: event => {
-              event.preventDefault();
-              navigation.navigate("CreateNew");
-            }
-          })}
-        />
-        <AppTabs.Screen
-          name="Example"
-          component={Example}
-          options={{
-            tabBarIcon: props => (
-              <Ionicons
-                name="ios-checkmark-circle-outline"
-                size={props.size}
-                color={props.color}
-              />
-            )
-          }}
-        />
-      </AppTabs.Navigator>
+
+        </AppTabs.Navigator>
+      </CalendarProvider>
     </UserProvider>
   </CountProvider>
 );
